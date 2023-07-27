@@ -7,6 +7,7 @@ public class AsyncEscPosPrinter extends EscPosPrinterSize {
     private DeviceConnection printerConnection;
     private String[] textsToPrint = new String[0];
 
+
     public AsyncEscPosPrinter(DeviceConnection printerConnection, int printerDpi, float printerWidthMM, int printerNbrCharactersPerLine) {
         super(printerDpi, printerWidthMM, printerNbrCharactersPerLine);
         this.printerConnection = printerConnection;

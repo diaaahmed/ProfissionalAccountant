@@ -26,6 +26,7 @@ import com.ahmed.profissionalaccountant.R;
 import com.dantsu.escposprinter.connection.DeviceConnection;
 import com.dantsu.escposprinter.connection.bluetooth.BluetoothConnection;
 import com.dantsu.escposprinter.connection.tcp.TcpConnection;
+import com.dantsu.escposprinter.exceptions.EscPosConnectionException;
 import com.dantsu.escposprinter.src.main.java.com.dantsu.escposprinter.connection.bluetooth.BluetoothPrintersConnections;
 import com.dantsu.escposprinter.src.main.java.com.dantsu.escposprinter.textparser.PrinterTextParserImg;
 import com.dantsu.escposprinter.src.main.java.com.dantsu.escposprinter.textparser.PrinterTextParserImg;
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     ==============================================================================================*/
 
     public interface OnBluetoothPermissionsGranted {
-        void onPermissionsGranted() throws IOException;
+        void onPermissionsGranted() throws IOException, EscPosConnectionException;
     }
 
     public static final int PERMISSION_BLUETOOTH = 1;
@@ -103,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
                 this.onBluetoothPermissionsGranted.onPermissionsGranted();
             } catch (IOException e) {
                 e.printStackTrace();
+            } catch (EscPosConnectionException e) {
+                throw new RuntimeException(e);
             }
         }
     }

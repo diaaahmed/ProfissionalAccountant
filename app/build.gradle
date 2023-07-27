@@ -93,17 +93,12 @@ dependencies {
 
     implementation 'com.github.DantSu:ESCPOS-ThermalPrinter-Android:3.3.0'
 
-
     implementation 'org.slf4j:slf4j-nop:1.7.25'
-
 
     implementation 'com.izettle:html2bitmap:1.9'
 
-
-
-
-
-
-
-
+    // rxjava
+    def rxJavaVersion = "2.1.1"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
 }

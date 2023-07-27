@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -26,6 +27,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.os.StrictMode;
 import android.provider.Settings;
 import android.text.Editable;
@@ -34,6 +37,7 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextWatcher;
 import android.util.Base64;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Printer;
 import android.view.View;
@@ -42,6 +46,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ahmed.printer.Common;
 import com.ahmed.printer.sheet;
@@ -65,6 +70,10 @@ import com.ahmed.profissionalaccountant.R;
 import com.ahmed.profissionalaccountant.Ui.AddInvoice.new_Invoice;
 import com.ahmed.profissionalaccountant.arabicletters.Tafqeet;
 import com.ahmed.profissionalaccountant.databinding.ActivityCashPaymentBinding;
+import com.dantsu.escposprinter.exceptions.EscPosBarcodeException;
+import com.dantsu.escposprinter.exceptions.EscPosConnectionException;
+import com.dantsu.escposprinter.exceptions.EscPosEncodingException;
+import com.dantsu.escposprinter.exceptions.EscPosParserException;
 import com.dantsu.escposprinter.src.main.java.com.dantsu.escposprinter.EscPosPrinter;
 import com.dantsu.escposprinter.src.main.java.com.dantsu.escposprinter.EscPosPrinterSize;
 import com.dantsu.escposprinter.src.main.java.com.dantsu.escposprinter.connection.bluetooth.BluetoothPrintersConnections;
@@ -101,9 +110,16 @@ import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.languages.ArabicLigaturizer;
 import com.itextpdf.text.pdf.languages.LanguageProcessor;
+import com.izettle.html2bitmap.BitmapCallback;
 import com.izettle.html2bitmap.Html2Bitmap;
 import com.izettle.html2bitmap.content.WebViewContent;
 
+
+import net.posprinter.posprinterface.ProcessData;
+import net.posprinter.posprinterface.UiExecute;
+import net.posprinter.utils.BitmapToByteData;
+import net.posprinter.utils.DataForSendToPrinterPos80;
+import net.posprinter.utils.PosPrinterDev;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -116,14 +132,23 @@ import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import dmax.dialog.SpotsDialog;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 
 public class CashPayment extends AppCompatActivity implements cash_bank_listener, DialogListener {
     static final String FILE_NAME = "com.ahmed.profissionalaccountant.MY_FILE";
+    private static final String TAG="CashPayment";
     public static final String maj = "res/font/majalla.ttf";
     public static final String cairoBold = "res/font/sukarbold.ttf";
+
     SharedPreferences sharedPreferences;
 
     private ActivityResultLauncher<Intent> launcher; // Initialise this object in Activity.onCreate()
@@ -1174,7 +1199,13 @@ public class CashPayment extends AppCompatActivity implements cash_bank_listener
 
     public void print() throws IOException {
        // createSmallpdf ();
-        printBluetooth();
+        Test();
+//        try {
+//            Test();
+//            //printBluetooth();
+//        } catch (EscPosConnectionException e) {
+//            Log.d("TAG", "diaa print first error:"+e.getMessage());
+//        }
     }
 
 
@@ -1198,6 +1229,8 @@ public class CashPayment extends AppCompatActivity implements cash_bank_listener
 
                 } catch (IOException e) {
                     e.printStackTrace();
+                } catch (EscPosConnectionException e) {
+                    throw new RuntimeException(e);
                 }
                 if (!readExt) {
                     takepermission();
@@ -1265,7 +1298,7 @@ public class CashPayment extends AppCompatActivity implements cash_bank_listener
     public com.dantsu.thermalprinter.MainActivity.OnBluetoothPermissionsGranted onBluetoothPermissionsGranted;
 
 
-    public void checkBluetoothPermissions(com.dantsu.thermalprinter.MainActivity.OnBluetoothPermissionsGranted onBluetoothPermissionsGranted) throws IOException {
+    public void checkBluetoothPermissions(com.dantsu.thermalprinter.MainActivity.OnBluetoothPermissionsGranted onBluetoothPermissionsGranted) throws IOException, EscPosConnectionException {
         this.onBluetoothPermissionsGranted = onBluetoothPermissionsGranted;
         if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.S && ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.BLUETOOTH}, com.dantsu.thermalprinter.MainActivity.PERMISSION_BLUETOOTH);
@@ -1282,7 +1315,7 @@ public class CashPayment extends AppCompatActivity implements cash_bank_listener
 
     private com.dantsu.escposprinter.connection.bluetooth.BluetoothConnection selectedDevice;
 
-    public void browseBluetoothDevice() throws IOException {
+    public void browseBluetoothDevice() throws IOException, EscPosConnectionException {
         this.checkBluetoothPermissions(() -> {
             final com.dantsu.escposprinter.connection.bluetooth.BluetoothConnection[] bluetoothDevicesList = (new BluetoothPrintersConnections()).getList();
 
@@ -1328,28 +1361,53 @@ public class CashPayment extends AppCompatActivity implements cash_bank_listener
 
     }
 
-    public void printBluetooth() {
-        try {
-            this.checkBluetoothPermissions(() -> {
-                new AsyncBluetoothEscPosPrint(
-                        this,
-                        new AsyncEscPosPrint.OnPrintFinished() {
-                            @Override
-                            public void onError(AsyncEscPosPrinter asyncEscPosPrinter, int codeException) {
-                                Log.e("Async.OnPrintFinished", "AsyncEscPosPrint.OnPrintFinished : An error occurred !");
-                            }
+    public void printBluetooth() throws EscPosConnectionException
+    {
+        Log.d(TAG, "diaa printBluetooth start method: ");
 
-                            @Override
-                            public void onSuccess(AsyncEscPosPrinter asyncEscPosPrinter) {
-                                Log.i("Async.OnPrintFinished", "AsyncEscPosPrint.OnPrintFinished : Print is finished !");
-                            }
-                        }
-                )
-                        .execute(this.getAsyncEscPosPrinter(selectedDevice));
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
+        EscPosPrinter printer = new EscPosPrinter(selectedDevice, 203, 48f, 32);
+
+       // Bitmap da = Test();
+
+       // activityCashPaymentBinding.imageBillTest.setImageBitmap(da);
+
+        try {
+            printer.printFormattedText(
+                            "[C]<img>" + PrinterTextParserImg.bitmapToHexadecimalString(printer,
+                                    activityCashPaymentBinding.imageBillTest.getDrawable())+"</img>\n" +
+                                    "[L]\n" +
+                                    "[C]<u><font size='big'>ORDER N°045</font></u>\n"
+                    );
+        } catch (EscPosParserException e) {
+            Log.d(TAG, "diaa first catch error:"+e.getMessage());
+        } catch (EscPosEncodingException e) {
+            Log.d(TAG, "diaa second catch error:"+e.getMessage());
+
+        } catch (EscPosBarcodeException e) {
+            Log.d(TAG, "diaa third catch error:"+e.getMessage());
+
         }
+//        try {
+//            this.checkBluetoothPermissions(() -> {
+//                new AsyncBluetoothEscPosPrint(
+//                        this,
+//                        new AsyncEscPosPrint.OnPrintFinished() {
+//                            @Override
+//                            public void onError(AsyncEscPosPrinter asyncEscPosPrinter, int codeException) {
+//                                Log.e("Async.OnPrintFinished", "AsyncEscPosPrint.OnPrintFinished : An error occurred !");
+//                            }
+//
+//                            @Override
+//                            public void onSuccess(AsyncEscPosPrinter asyncEscPosPrinter) {
+//                                Log.i("Async.OnPrintFinished", "AsyncEscPosPrint.OnPrintFinished : Print is finished !");
+//                            }
+//                        }
+//                )
+//                        .execute(this.getAsyncEscPosPrinter(selectedDevice));
+//            });
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
 
@@ -1365,12 +1423,11 @@ public class CashPayment extends AppCompatActivity implements cash_bank_listener
 
 
 
-    public AsyncEscPosPrinter getAsyncEscPosPrinter(com.dantsu.escposprinter.connection.DeviceConnection printerConnection) throws IOException {
+    public AsyncEscPosPrinter getAsyncEscPosPrinter(com.dantsu.escposprinter.connection.DeviceConnection printerConnection) throws IOException, EscPosConnectionException {
+        @SuppressLint("SimpleDateFormat")
         SimpleDateFormat format = new SimpleDateFormat("'on' yyyy-MM-dd 'at' HH:mm:ss");
 
-        int printerWidth = 576 ;// width of the printer in pixels
-
-
+        EscPosPrinter printerA = new EscPosPrinter(printerConnection, 203, 48f, 32);
         AsyncEscPosPrinter printer = new AsyncEscPosPrinter(printerConnection, 203, 48f, 32);
 
         return printer.addTextToPrint(
@@ -1438,7 +1495,7 @@ public class CashPayment extends AppCompatActivity implements cash_bank_listener
     }
 
 
-    public  Bitmap  Test ()
+    public  void  Test ()
     {
         String invoice="";
         StringBuilder allItemsInHtml= new StringBuilder();
@@ -1452,9 +1509,94 @@ public class CashPayment extends AppCompatActivity implements cash_bank_listener
                     replace(Common.ITEM_NAME, invoiceClass.getBillDetailsApis().get(i).getItemame())
                     .replace(Common.ITEM_QUANTITY,invoiceClass.getBillDetailsApis().get(i).getQuantity().toString()));
         }
-        invoice=""+ allItemsInHtml;
+        invoice=sheet.END_HEAD + allItemsInHtml;
 
-       return new Html2Bitmap.Builder().setContext(CashPayment.this).
-                setContent(WebViewContent.html(invoice)).build().getBitmap();
+      //  Bitmap newTest = textAsBitmap(invoice);
+
+
+        String finalInvoice = invoice;
+        Observable observable =  Observable.create(new ObservableOnSubscribe<Object>() {
+                    @Override
+                    public void subscribe(@io.reactivex.annotations.NonNull ObservableEmitter<Object> emitter) throws Exception {
+                        Bitmap dsa =  new Html2Bitmap.Builder().setContext(CashPayment.this).
+                                setContent(WebViewContent.html(finalInvoice)).build().getBitmap();
+                        emitter.onNext(dsa);
+                        Thread.sleep(3000);
+                        emitter.onComplete();
+                    }
+                }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+
+        io.reactivex.Observer observer = new io.reactivex.Observer() {
+            @Override
+            public void onSubscribe(@io.reactivex.annotations.NonNull Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(@io.reactivex.annotations.NonNull Object o)
+            {
+                activityCashPaymentBinding.imageBillTest.setImageBitmap((Bitmap) o);
+            }
+
+            @Override
+            public void onError(@io.reactivex.annotations.NonNull Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete()
+            {
+                activityCashPaymentBinding.imageBillTest.setVisibility(View.VISIBLE);
+
+                EscPosPrinter printer = null;
+                try {
+                    printer = new EscPosPrinter(BluetoothPrintersConnections.selectFirstPaired(), 203, 48f, 32);
+                } catch (EscPosConnectionException e) {
+                    throw new RuntimeException(e);
+                }
+
+                // Bitmap da = Test();
+
+                // activityCashPaymentBinding.imageBillTest.setImageBitmap(da);
+
+                try {
+                    try {
+                        printer.printFormattedText(
+                                "[C]<img>" + PrinterTextParserImg.bitmapToHexadecimalString(printer,
+                                        activityCashPaymentBinding.imageBillTest.getDrawable())+"</img>\n" +
+                                        "[L]\n" +
+                                        "[C]<u><font size='big'>ORDER N°045</font></u>\n"
+                        );
+                    } catch (EscPosConnectionException e) {
+                        Log.d(TAG, "diaa before catch error:"+e.getMessage());
+
+                    }
+                } catch (EscPosParserException e) {
+                    Log.d(TAG, "diaa first catch error:"+e.getMessage());
+                } catch (EscPosEncodingException e) {
+                    Log.d(TAG, "diaa second catch error:"+e.getMessage());
+
+                } catch (EscPosBarcodeException e) {
+                    Log.d(TAG, "diaa third catch error:"+e.getMessage());
+
+                }
+
+            }
+        };
+
+        observable.subscribe(observer);
+    }
+
+    public Bitmap textAsBitmap(String text) {
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setTextAlign(Paint.Align.LEFT);
+        float baseline = -paint.ascent(); // ascent() is negative
+        int width = (int) (paint.measureText(text) + 0.5f); // round
+        int height = (int) (baseline + paint.descent() + 0.5f);
+        Bitmap image = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(image);
+        canvas.drawText(text, 0, baseline, paint);
+        return image;
     }
 }
