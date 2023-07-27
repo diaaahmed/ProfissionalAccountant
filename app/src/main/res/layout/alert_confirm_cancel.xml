@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="5dp"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="5dp">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:layout_margin="10dp">
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:fontFamily="@font/newahmed"
+        android:textSize="25sp"
+        android:textStyle="bold"
+    android:id="@+id/msg"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/confirm"
+        android:padding="10dp"
+        android:drawableEnd="@drawable/check1"
+        android:drawablePadding="10dp"
+        android:background="@color/green"
+        android:text="@string/yes"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/msg"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50dp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cancel"
+        android:padding="10dp"
+        android:drawableEnd="@drawable/cross1"
+        android:drawablePadding="10dp"
+        android:background="@color/red"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:layout_below="@id/msg"
+        android:text="@string/no"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="50dp"/>
+</RelativeLayout>
+</androidx.cardview.widget.CardView>

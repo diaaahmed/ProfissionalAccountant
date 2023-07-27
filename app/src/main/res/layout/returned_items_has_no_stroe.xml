@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="5dp"
+    app:cardBackgroundColor="@color/offwhite">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fLayout">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/itemName"
+            android:layout_marginStart="10dp"
+            android:textStyle="bold"
+
+            android:textSize="25sp"
+            android:fontFamily="@font/majalla"
+            android:textColor="@color/orange"/>
+    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fLayout"
+            android:id="@+id/secLay">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/storeTxt"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+
+                android:fontFamily="@font/majalla"
+                android:text="@string/ItemStoe"
+                android:layout_marginStart="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/store"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/storeTxt"
+                android:fontFamily="@font/majalla"
+                android:layout_marginStart="10dp"/>
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@id/secLay">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/unitTxt"
+            android:textColor="@color/black"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/majalla"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="@string/Unit"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/unit"
+            android:textColor="@color/black"
+            android:fontFamily="@font/majalla"
+            android:layout_marginStart="10dp"
+            android:textSize="25sp"
+            android:layout_toEndOf="@+id/unitTxt"
+            android:textStyle="bold"
+           />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:id="@+id/availableTxt"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:text="@string/availableItems"
+            android:fontFamily="@font/majalla"
+            android:layout_toStartOf="@id/available"
+         />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/available"
+            android:textColor="@color/red"
+            android:textSize="25sp"
+            android:layout_alignParentEnd="true"
+
+
+            android:fontFamily="@font/majalla"
+            android:layout_marginStart="10dp"/>
+       <!-- <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/available"
+            android:id="@+id/soldTxt"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:text="@string/soldItem"
+            android:fontFamily="@font/majalla"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sold"
+            android:textSize="25sp"
+
+            android:layout_toEndOf="@id/soldTxt"
+            android:fontFamily="@font/majalla"
+            android:layout_marginStart="10dp"/>-->
+    </RelativeLayout>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

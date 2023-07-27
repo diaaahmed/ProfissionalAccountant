@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Add">Add New</string>
+    <string name="New"></string>
+    <string name="Name">Name</string>
+    <string name="MenuItemCustomerSupplier">Cust</string>
+    <string name="Address">Address</string>
+    <string name="Mobile">Mobile</string>
+    <string name="email">E-mail</string>
+    <string name="tax">Tax Number</string>
+    <string name="debit">Debit</string>
+    <string name="credit">Credit</string>
+    <string name="limit">credit limit</string>
+    <string name="center">Center</string>
+    <string name="salesRep">Sales Rep.</string>
+    <string name="notes">Notes</string>
+    <string name="add">Add</string>
+
+
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/home" android:title="@string/MenuItemMain"
+    android:icon="@drawable/home"/>
+    <item android:id="@+id/NewCustomerSupplier" android:title="@string/MenuItemAdd"
+        android:icon="@drawable/addnewclient"/>
+    <item android:id="@+id/CustomerSupplier" android:title="@string/MenuItemCustomerSupplier"
+        android:icon="@drawable/customer"/>
+
+    <item android:id="@+id/more" android:title="@string/MenuItemMore"
+        android:icon="@drawable/ellipsis"/>
+
+
+</menu>

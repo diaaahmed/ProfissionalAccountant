@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/toastLayout"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:id="@+id/toastImage"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/cross"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/toastImage"
+        android:text="Signing You With Facebook"
+        android:textSize="15sp"
+        android:textColor="#43aacc"
+        android:layout_marginLeft="10dp"/>
+    </RelativeLayout>
+</LinearLayout>

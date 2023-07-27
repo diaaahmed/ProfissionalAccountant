@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:id="@+id/searchLayout">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtUsername"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="63dp"
+            android:textColorHint="#A7A7A7">
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:textColor="#5B5B5B"
+                android:textSize="15sp"
+                android:layout_marginStart="20dp"
+                android:padding="5dp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                ignore="TouchTargetSizeCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/find"
+                android:background="@drawable/circularbtn"
+                android:layout_centerVertical="true"
+                               android:layout_centerHorizontal="true"
+                android:layout_marginStart="30dp"
+                android:clipToPadding="false"
+                android:clipChildren="false"
+                android:scaleType="fitCenter"
+                android:padding="10dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/people"
+                ></ImageButton>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/searchLayout"
+    android:id="@+id/radilayout">
+
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioGroup"
+                android:padding="5dp"
+
+                android:orientation="vertical">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/s1"
+                android:checked="true"
+                android:layout_gravity="start"
+
+                android:layout_alignParentStart="true"
+                android:text="@string/Name"></RadioButton>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/s2"
+                android:layout_gravity="start"
+                android:text="@string/Mobile"></RadioButton>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/s3"
+                android:layout_toEndOf="@+id/s2"
+                android:layout_gravity="start"
+                android:text="@string/tax"></RadioButton>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/s4"
+                android:layout_toEndOf="@+id/s3"
+                android:layout_gravity="start"
+                android:text="@string/register"></RadioButton>
+            </RadioGroup>
+
+
+</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radilayout">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:id="@+id/noresultTxt"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:textAlignment="center"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/noresultTxt"
+            android:id="@+id/resultRecycler"/>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

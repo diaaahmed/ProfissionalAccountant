@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    android:padding="5dp"
+    tools:context=".Ui.AddInvoice.Add_Item">
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/bottomlayout"
+    android:layout_marginBottom="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@color/white"
+        android:id="@+id/itemsLayout"
+        android:orientation="vertical">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtITems"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+
+            android:layout_marginStart="70dp"
+            android:layout_marginEnd="70dp"
+            android:layout_below="@+id/companyLogo"
+            android:hint="@string/items"
+            android:textColorHint="#A7A7A7"
+            app:boxStrokeColor="#EAEAEE"
+            app:endIconTint="@color/red">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/AllItems"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:textColor="#5B5B5B"
+                android:textAlignment="center"
+                android:padding="10dp"
+                android:fontFamily="@font/a"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                tools:ignore="TouchTargetSizeCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/discriptionLayout"
+        android:layout_below="@id/itemsLayout"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/storelayout">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/ItemStoe"
+            android:layout_weight="1"
+            android:fontFamily="@font/majalla"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/raduis_shape"
+                android:backgroundTint="@color/white"
+                android:layout_height="53dp"
+                android:id="@+id/txtstore"
+                android:padding="3dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_marginTop="2dp"
+                android:hint="@string/ItemStoe">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp"
+                    android:inputType="none"
+                    android:id="@+id/store">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:background="@drawable/raduis_shape"
+            android:backgroundTint="@color/white"
+            android:layout_width="match_parent"
+            android:id="@+id/itemName"
+            android:layout_height="wrap_content"
+
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/notosansarabicvariablef"
+            android:textColor="@color/red"
+            android:textAlignment="center"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/qunatityandunit"
+        android:layout_below="@+id/discriptionLayout"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1.7"
+            android:layout_height="wrap_content"
+            android:id="@+id/quantityLayout"
+            android:orientation="vertical"
+            android:layout_below="@id/discriptionLayout">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/quantity"
+                android:layout_marginTop="10dp"
+                android:textSize="25sp"
+                android:fontFamily="@font/majalla"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginEnd="2dp"
+                android:background="@drawable/raduis_shape"
+                android:backgroundTint="@color/white">
+                <EditText
+                    android:backgroundTint="@color/white"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:id="@+id/itemQuantity"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:inputType="numberDecimal"
+                    android:text="1"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/notosansarabicvariablef"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    />
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/addOne"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/circularbtn"
+                    android:backgroundTint="@color/blueNew"
+                    android:text="+"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"/>
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:background="#E9581E"
+                    />
+
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/MinusOne"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/circularbtn"
+                    android:backgroundTint="@color/blueNew"
+                    android:text="-"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/UnitLayout"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:orientation="vertical"
+            android:layout_below="@id/quantityLayout">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Unit"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"
+                android:fontFamily="@font/majalla"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/raduis_shape"
+                android:backgroundTint="@color/white"
+                android:layout_height="53dp"
+                android:id="@+id/txtUnit"
+
+                android:padding="3dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_marginTop="2dp"
+                android:hint="@string/Unit">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp"
+                    android:textSize="15sp"
+                    android:inputType="none"
+                    android:id="@+id/units">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/price"
+        android:layout_below="@+id/qunatityandunit"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/price"
+            android:textSize="30sp"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/majalla"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+        <EditText
+            android:backgroundTint="@color/white"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:id="@+id/itemPrice"
+            android:enabled="false"
+            android:background="@drawable/raduis_shape"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:inputType="numberDecimal"
+            android:textSize="20sp"
+            android:fontFamily="@font/notosansarabicvariablef"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            />
+    </LinearLayout>
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/priceAfterTax"
+        android:layout_below="@+id/price"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/priceaftertax"
+            android:textSize="30sp"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/majalla"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+        <EditText
+            android:backgroundTint="@color/white"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:id="@+id/itemPriceAfterTax"
+            android:background="@drawable/raduis_shape"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:inputType="numberDecimal"
+            android:textSize="20sp"
+            android:fontFamily="@font/notosansarabicvariablef"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sumprice"
+        android:layout_below="@+id/priceAfterTax"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/Totalprice"
+            android:textSize="30sp"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/majalla"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+        <EditText
+            android:backgroundTint="@color/grey"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:id="@+id/itemsumPrice"
+            android:enabled="false"
+
+            android:background="@drawable/raduis_shape"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:inputType="numberDecimal"
+            android:textSize="20sp"
+            android:fontFamily="@font/notosansarabicvariablef"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/discount"
+        android:layout_below="@+id/sumprice"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/discount"
+            android:textSize="30sp"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/majalla"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+        <EditText
+            android:backgroundTint="@color/white"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:id="@+id/itemDiscount"
+            android:background="@drawable/raduis_shape"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:inputType="numberDecimal"
+            android:text="0"
+            android:textSize="20sp"
+            android:fontFamily="@font/notosansarabicvariablef"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            />
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@id/discount"
+        android:background="#E9581E"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/total"
+        android:layout_below="@+id/discount"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/Total"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/majalla"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+        <TextView
+            android:backgroundTint="@color/white"
+            android:layout_width="0dp"
+            android:layout_weight="1.3"
+            android:id="@+id/itemTotal"
+            android:background="@drawable/raduis_shape"
+            android:layout_height="130dp"
+            android:padding="10dp"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:fontFamily="@font/notosansarabicvariablef"
+            android:textColor="@color/blueNew"
+            android:textAlignment="center"
+            />
+    </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/bottomlayout"
+    android:layout_alignParentBottom="true">
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addItemBtn"
+        android:background="@drawable/raduis_shape"
+        android:backgroundTint="@color/blueNew"
+        android:textAllCaps="false"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:text="@string/add">
+
+    </Button>
+</LinearLayout>
+</RelativeLayout>

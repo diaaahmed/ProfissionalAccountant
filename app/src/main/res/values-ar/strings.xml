@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">المحاسب المحترف</string>
+    <string name="username">اسم المستخدم</string>
+    <string name="password">كلمة السر</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="store">الفرع</string>
+    <string name="errorMsgCompleteData">يرجى استكمال البيانات بشكل صحيح</string>
+    <string name="loginError">خطأ في بيانات الدخول</string>
+    <string name="Ok">حسناً</string>
+    <string name="MenuItemMain">الرئيسية</string>
+    <string name="MenuItemAdd">إضافة عميل</string>
+    <string name="MenuItemMore">المزيد</string>
+    <string name="Supplier">مورد</string>
+    <string name="customer">عميل</string>
+    <string name="errorMsgCompleteCustmerName">يرجى ادخال اسم العميل</string>
+    <string name="lang">عربي</string>
+    <string name="register">السجل التجاري</string>
+    <string name="bigCenter">البلد</string>
+    <string name="addition">تمت الإضافة بنجاح</string>
+    <string name="additionerror">حدث خطأ</string>
+
+    <string name="smallCenter">المركز</string>
+    <string name="choose">اختر ...</string>
+    <string name="minimumserch">يرجى ادخال ثلاثة حروف او ارقام على الأقل</string>
+    <string name="editdata">تعديل بيانات:</string>
+    <string name="save">حفظ</string>
+    <string name="nodata">لاتوجد بيانات مطابقة لمعيار البحث</string>
+    <string name="wait">يرجى الانتظار ..</string>
+    <string name="newinvoice">فاتورة جديدة</string>
+    <string name="editclient">تعديل </string>
+    <string name="sellInvoice">فاتورة بيع إلى</string>
+    <string name="proceed">متابعة</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+    <string name="confirmback">تأكيد الغاء الفاتورة</string>
+    <string name="sellingprice">سعر البيع</string>
+    <string name="retail">قطاعي</string>
+    <string name="wholesale">جملة</string>
+    <string name="merchant">تاجر</string>
+    <string name="addItem">إضافة صنف</string>
+    <string name="items">الاصناف</string>
+    <string name="item">الصنف:</string>
+    <string name="quantity">الكمية:</string>
+    <string name="price">سعر الوحدة:</string>
+    <string name="Totalprice">إجمالي </string>
+    <string name="priceaftertax"> بعد الضريبة:</string>
+    <string name="Unit">الوحدة:</string>
+    <string name="discount">الخصم:</string>
+    <string name="Total">الإجمالي:</string>
+    <string name="ItemStoe">المخزن:</string>
+    <string name="paymentmethod">طريقة الدفع:</string>
+    <string name="cash">نقدي</string>
+    <string name="postPaid">آجل</string>
+    <string name="numberofitems">عدد الأصناف:</string>
+    <string name="availableQuantity">المتاح بالمخازن:</string>
+    <string name="soldItem"> المباع</string>
+    <string name="availableItems">المتاح</string>
+    <string name="ItemsexceedAvailable">الكميات المباعة تتخطى الموجود بالمخزن المختار للأصناف التالية </string>
+    <string name="edit">تعديل </string>
+    <string name="cashpayment">نقداً</string>
+    <string name="cancel">الغاء</string>
+    <string name="network">الشبكة</string>
+    <string name="transfer">حوالة</string>
+    <string name="check">شيك</string>
+    <string name="checknumber">رقم الشيك</string>
+    <string name="totalpaid">إجمالي المدفوع</string>
+    <string name="approve">حفظ</string>
+    <string name="duemustequal">يجب ان يساوي المبلغ المدفوع المبلغ المستحق</string>
+    <string name="selectoneItem">لايوجد أصناف مضافة</string>
+    <string name="priceequalzero">لايمكن ان يكون السعر أو الإجمالي صفر</string>
+    <string name="paidCanontexceeddue">لايمكن ان يتساوى المبلغ المدفوع بالمستحق او يتخطاه</string>
+    <string name="paidCanontexceedlimit"> الإجمالي يتخطى الحد المسموح به للعميل</string>
+
+    <string name="errorcompletedata">يرجى مراجعة البيانات</string>
+
+    <string name="enterchecknumber">يرجى ادخال رقم الشيك</string>
+    <string name="back">عودة للخلف</string>
+    <string name="Date">التاريخ</string>
+    <string name="paid">المدفوع</string>
+    <string name="share">مشاركة</string>
+    <string name="simplecash" >فاتورة ضريبية مبسطة نقدي</string>
+    <string name="simpleposponed">فاتورة ضريبية مبسطة اجلة</string>
+
+    <string name="allowuse">السماح بتحميل فواتير</string>
+    <string name="allow">سماح</string>
+    <string name="deny">رفض</string>
+    <string name="permissionrequest">طلب تصريح</string>
+
+
+</resources>

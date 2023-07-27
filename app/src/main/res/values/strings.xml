@@ -1,0 +1,92 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="baseUrl" translatable="false">http://65.109.97.12:8080/api/CustomerSupplier/</string>
+    <string name="app_name">Profissional Accountant</string>
+    <string name="username">User name</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="store">Branch</string>
+    <string name="errorMsgCompleteData">please complete feilds correctly</string>
+    <string name="loginError">Wrong login information</string>
+    <string name="Ok">Ok</string>
+    <string name="MenuItemMain">Main</string>
+    <string name="MenuItemAdd">Add New</string>
+    <string name="MenuItemMore">More</string>
+    <string name="Supplier">Supplier</string>
+    <string name="customer">customer</string>
+    <string name="errorMsgCompleteCustmerName">Please enter user name</string>
+    <string name="lang">English</string>
+    <string name="register">Commercial Register</string>
+    <string name="bigCenter">Main center</string>
+    <string name="addition">Add successfully</string>
+    <string name="additionerror">Error Occured</string>
+    <string name="smallCenter">small center</string>
+    <string name="choose">Select...</string>
+    <string name="minimumserch">Please enter 3 digits or letters at least</string>
+    <string name="editdata">Modify data of:</string>
+    <string name="save">Save</string>
+    <string name="nodata">There is no data matching the search criteria</string>
+    <string name="wait">Pleae wait ..</string>
+    <string name="newinvoice">New Invoice</string>
+    <string name="editclient">Edit </string>
+    <string name="sellInvoice">Sales Invoice to:</string>
+    <string name="proceed">Proceed</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="sellingprice">Selling Price</string>
+    <string name="confirmback">Confirm Cancel Invoice</string>
+    <string name="retail">Retail</string>
+    <string name="wholesale">WholeSale</string>
+    <string name="merchant">Merchant</string>
+    <string name="addItem">Add Item</string>
+    <string name="items">Items</string>
+    <string name="item">Item:</string>
+    <string name="quantity">Quantity:</string>
+    <string name="price">Unit price:</string>
+    <string name="Totalprice">Total Price:</string>
+    <string name="priceaftertax"> After tax:</string>
+    <string name="Unit">Unit:</string>
+    <string name="discount">Discount:</string>
+    <string name="Total">Total:</string>
+    <string name="ItemStoe">Store:</string>
+    <string name="paymentmethod">Payment Method:</string>
+    <string name="cash">cash</string>
+    <string name="postPaid">Postpaid</string>
+    <string name="numberofitems">Number of Items:</string>
+    <string name="availableQuantity">avaialble quantity in store is:</string>
+    <string name="soldItem">Sold </string>
+    <string name="availableItems">Available </string>
+    <string name="ItemsexceedAvailable">Following sold items exceeds available in selected stores </string>
+    <string name="edit">Edit </string>
+    <string name="cashpayment">Cash</string>
+    <string name="cancel">Cancel</string>
+    <string name="network">Network</string>
+    <string name="transfer">Transfer</string>
+    <string name="check">Check</string>
+    <string name="checknumber">Check No.</string>
+    <string name="totalpaid">Total Paid</string>
+    <string name="approve">Save</string>
+    <string name="duemustequal">Paid amount must equal Due</string>
+    <string name="paidCanontexceeddue">Paid amount Can not equal or exceed Due</string>
+    <string name="paidCanontexceedlimit">Paid amount Can not equal or exceed Credit limit</string>
+
+    <string name="errorcompletedata">Please check data</string>
+
+    <string name="selectoneItem">No Items Added</string>
+    <string name="priceequalzero">Price or Total amount Cannot  be zero</string>
+    <string name="enterchecknumber">Please enter check number</string>
+    <string name="back">Back</string>
+    <string name="customername">Customer Name</string>
+    <string name="Date">Date</string>
+    <string name="paid">Paid</string>
+    <string name="share">Share</string>
+    <string name="simplecash" >فاتورة ضريبية مبسطة نقدي</string>
+    <string name="simpleposponed">فاتورة ضريبية مبسطة اجلة</string>
+
+
+
+
+    <string name="allowuse">Allow downloading Invoice</string>
+    <string name="allow">Allow</string>
+    <string name="deny">Deny</string>
+    <string name="permissionrequest">permission request</string>
+</resources>

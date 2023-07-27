@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Ui.AddInvoice.new_Invoice">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="12">
+
+
+
+<LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:id="@+id/titleLayout">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/titleTxt"
+    android:fontFamily="@font/majalla"
+    android:textColor="@color/black"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    android:text="@string/sellInvoice"/>
+<TextView
+        android:id="@+id/CustomerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:layout_marginTop="1dp"
+        android:layout_toEndOf="@id/titleTxt"
+        android:fontFamily="@font/newahmed"
+        android:textSize="20sp"/>
+</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/majalla"
+            android:textStyle="bold"
+            android:text="@string/paymentmethod"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioGroup"
+            android:padding="5dp"
+            android:orientation="horizontal">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cash"
+                android:checked="true"
+                android:textSize="20sp"
+                android:layout_alignParentStart="true"
+                android:text="@string/cash"></RadioButton>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:textSize="20sp"
+                android:id="@+id/postpaid"
+                android:text="@string/postPaid"></RadioButton>
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:id="@+id/amountLayoutifpostpaid"
+        android:layout_margin="5dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        >
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/majalla"
+        android:id="@+id/paidText"
+        android:layout_gravity="center"
+        android:padding="5dp"
+        android:text="@string/paid"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/paidAmount"
+        android:layout_width="0dp"
+        android:layout_weight="0.9"
+        android:layout_gravity="center"
+        android:layout_marginStart="20dp"
+        android:inputType="numberDecimal"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/paidText"
+        android:background="@drawable/raduis_shape"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="0.7"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/majalla"
+        android:id="@+id/discountTxt"
+        android:padding="5dp"
+        android:text="@string/discount"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/DiscountofPostponed"
+        android:layout_width="0dp"
+        android:layout_weight="0.9"
+        android:layout_gravity="center"
+        android:layout_marginStart="20dp"
+        android:inputType="numberDecimal"
+        android:layout_height="wrap_content"
+        android:background="@drawable/raduis_shape"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/allAly"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="20dp"
+            android:layout_height="53dp"
+            android:id="@+id/txtsales"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_marginTop="1dp"
+            android:hint="@string/salesRep">
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:inputType="none"
+                android:id="@+id/salesRep">
+            </AutoCompleteTextView>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="53dp"
+            android:id="@+id/txtselltype"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_marginTop="1dp"
+            android:hint="@string/sellingprice">
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:inputType="none"
+                android:id="@+id/salesType">
+            </AutoCompleteTextView>
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sellTypeText"
+            android:visibility="gone"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:fontFamily="@font/majalla"/>
+
+
+
+    </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#E9581E"
+            android:layout_marginTop="5dp"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_margin="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/limit"
+                android:textSize="20sp"
+                android:id="@+id/limitTxt"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/limit"
+                    android:layout_toEndOf="@+id/limitTxt"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@color/red"
+                    android:textSize="25sp"
+
+                    android:text="helloo"
+                    android:layout_centerVertical="true"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/addItem"
+                android:layout_alignParentEnd="true"
+                android:background="@android:color/transparent"
+                android:text="@string/addItem"
+                android:textAllCaps="false"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/cairoblack"
+                android:layout_marginEnd="10dp"
+                android:drawableStart="@drawable/additem"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_margin="5dp">
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/itemRecyler">
+            </androidx.recyclerview.widget.RecyclerView>
+        </RelativeLayout>
+</LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/proceedlayout"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.55"
+        android:orientation="vertical"
+        android:gravity="bottom">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/black"
+    android:background="@drawable/raduis_shape">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:id="@+id/itemscoountText"
+        android:textColor="@color/white"
+        android:text="@string/numberofitems"
+        android:fontFamily="@font/majalla"
+        android:textSize="20sp"
+        android:layout_alignParentStart="true"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/itemCount"
+        android:fontFamily="@font/majalla"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+
+        android:layout_toEndOf="@id/itemscoountText"
+        android:layout_marginStart="10sp"
+       />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/itemSumText"
+        android:fontFamily="@font/majalla"
+        android:text="@string/Total"
+        android:textSize="20sp"
+        android:layout_toEndOf="@id/itemCount"
+        android:textColor="@color/white"
+        android:layout_marginStart="10dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/itemSum"
+        android:fontFamily="@font/majalla"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_toEndOf="@id/itemSumText"
+        android:textColor="@color/white"
+        android:layout_marginStart="20dp"
+       />
+
+</RelativeLayout>
+        <Button
+            android:id="@+id/proceed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/raduis_shape"
+            android:backgroundTint="@color/orange"
+            android:text="@string/proceed"
+            android:layout_marginBottom="10dp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
